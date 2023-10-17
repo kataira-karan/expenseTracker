@@ -1,0 +1,20 @@
+{
+  "name": "expensetracker",
+  "version": "1.0.0",
+  "description": "Get data from spiltwise and update it in notion",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon  index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@notionhq/client": "^0.4.13",
+    "axios": "^1.5.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.1",
+    "splitwise": "^1.0.0"
+  }
+}
