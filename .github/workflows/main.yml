@@ -1,0 +1,12 @@
+name : expenseTracker
+
+on : [ push ]
+
+jobs:
+  job1:
+    name: Update Notion
+    runs-on : winodws-latest
+    steps:
+      - name : step one
+        uses : actions/checkout@v2
+  
