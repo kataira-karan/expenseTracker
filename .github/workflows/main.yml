@@ -3,9 +3,8 @@ name : expenseTracker
 on : [ push ]
 
 jobs:
-  job1:
-    name: build-node
-    runs-on : winodws-latest
+  build-node
+    runs-on : windows-latest
     steps:
       - run : node --version
       - run : npm --version
