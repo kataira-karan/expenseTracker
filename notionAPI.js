@@ -36,6 +36,10 @@ const addExpense = async (title, my_share, created_by, date) => {
       },
     },
   });
+
+  setTimeout(() => {
+    console.log("waiting ");
+  }, 1000);
 };
 
 module.exports = { addExpense };
