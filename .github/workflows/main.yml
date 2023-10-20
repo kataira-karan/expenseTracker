@@ -3,10 +3,13 @@ name : expenseTracker
 on : [ push ]
 
 jobs:
-  job1:
-    name: Update Notion
-    runs-on : winodws-latest
+  build-node
+    runs-on : windows-latest
     steps:
-      - name : step one
-        uses : actions/checkout@v2
+      - run : node --version
+      - run : npm --version
+      - uses : actions/cheeckout@v3
+      - run : npm install
+      - run : node app.js
+      
   

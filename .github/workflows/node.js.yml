@@ -1,0 +1,25 @@
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - master  # Replace 'main' with your default branch name
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14  # You can specify the Node.js version you need
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run Node.js file
+      run: npm start  # Replace 'yourfile.js' with the actual name of your Node.js file
