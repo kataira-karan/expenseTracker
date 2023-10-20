@@ -4,9 +4,13 @@ on : [ push ]
 
 jobs:
   job1:
-    name: Update Notion
+    name: build-node
     runs-on : winodws-latest
     steps:
-      - name : step one
-        uses : actions/checkout@v2
+      - run : node --version
+      - run : npm --version
+      - uses : actions/cheeckout@v3
+      - run : npm install
+      - run : node app.js
+      
   
