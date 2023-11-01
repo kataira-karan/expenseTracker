@@ -131,10 +131,12 @@ const getExpenses = async () => {
 
 // AFTER GETTING NOTIFICATION WE NEED TO FETCH EXPENSE DETAILS USING EXPENSEID WHICH IS PRESENT IN NOTIFICATION DETAILS
 const getExpensesById = async (expenseId) => {
-  let getExpensesUrl = `https://secure.splitwise.com/api/v3.0/get_expense/${expenseId}`;
-  let res = await axios.get(getExpensesUrl, { headers });
-  //   console.log(res.data);
-  return res.data.expense;
+  try {
+    let getExpensesUrl = `https://secure.splitwise.com/api/v3.0/get_expense/${expenseId}`;
+    let res = await axios.get(getExpensesUrl, { headers });
+    //   console.log(res.data);
+    return res.data.expense;
+  } catch (error) {}
 };
 
 // GET USER DETAILS TO SHOW ALL THE USERS INCLUDEDE IN THE EXPENSE
@@ -146,10 +148,12 @@ const getUser = async (userId) => {
 
 // TO SHOW GROUP DETAILS IN NOTION
 const getGroup = async (groupId) => {
-  let getGroupUrl = `https://secure.splitwise.com/api/v3.0/get_group/${groupId}`;
-  let res = await axios.get(getGroupUrl, { headers });
-  //   console.log(res.data.group);
-  return res.data.group;
+  try {
+    let getGroupUrl = `https://secure.splitwise.com/api/v3.0/get_group/${groupId}`;
+    let res = await axios.get(getGroupUrl, { headers });
+    //   console.log(res.data.group);
+    return res.data.group;
+  } catch (error) {}
 };
 
 module.exports = { getExpenses, getExpensesById, getUser, getGroup };

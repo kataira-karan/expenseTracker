@@ -12,5 +12,5 @@ getNotification();
 // to dos
 //  add group name
 //  add photo
-// add to git hub
+//  add to git hub
 //

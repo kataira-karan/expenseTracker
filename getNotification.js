@@ -29,18 +29,18 @@ const getNotification = async () => {
 
     // FETCH ACTION BY ID
     let expense = await getExpensesById(notification.source.id);
-
+    if (!expense) continue;
     // IF THE NOTIFICATION IS TO SETTLE UP THE BALANCE
     if (expense.description === "Settle all balances") {
       continue;
     }
 
-    if (notification.type === 2) {
-      //   IF NOTIFICATION IS TO DELETE EXPENSE WE NEED TO DELETE IT FROM NOTION
-      updateExpense(expense, true);
-      console.log(notification);
-      continue;
-    }
+    // if (notification.type === 2) {
+    //   //   IF NOTIFICATION IS TO DELETE EXPENSE WE NEED TO DELETE IT FROM NOTION
+    //   updateExpense(expense, true);
+    //   console.log(notification);
+    //   continue;
+    // }
 
     // IF NOTIFICATION IS TO UPDATE AN EXISING EXPENSE
     // if (notification.type === 1) {
@@ -84,6 +84,7 @@ const getNotification = async () => {
     if (expense.group_id) {
       console.log("Expense added in group");
       let group = await getGroup(expense.group_id);
+      if (!group) continue;
       groupName = group.name;
     }
 
