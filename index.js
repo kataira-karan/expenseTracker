@@ -1,16 +1,5 @@
-const express = require("express");
-const app = express();
-const port = 3000; // You can change the port to any desired port number
 require("dotenv").config();
-const { getExpenses } = require("./splitwiseAPI");
-const { getNotification } = require("./getNotification");
+const { getNotification } = require("./splitwiseAPI");
 
-// getExpenses();
-
+// FETCH NOTIFICATION TO UPDATE NOTION EVERY DAY AT 12AM
 getNotification();
-
-// to dos
-//  add group name
-//  add photo
-//  add to git hub
-//

@@ -1,23 +1,30 @@
+require("dotenv").config();
 // Notion SDK
 const { Client } = require("@notionhq/client");
 const notion = new Client({
   auth: process.env.notion_api_secret,
 });
-require("dotenv").config();
 
 //  ADDING EXPENSE TO NOTION
 const addExpense = async (
   expenseID,
-  title,
+  description,
   my_share,
+  pageImg,
   created_by,
   groupName,
   participants,
   date
 ) => {
   console.log("adding expense to notion");
-  console.log(expenseID);
-  await notion.pages.create({
+  let expense = await notion.pages.create({
+    icon: {
+      type: "external",
+      external: {
+        url: pageImg,
+      },
+    },
+
     parent: {
       type: "database_id",
       database_id: process.env.database_id,
@@ -28,16 +35,27 @@ const addExpense = async (
         number: expenseID,
       },
 
-      Name: {
+      Paid_by: {
         title: [
           {
             type: "text",
             text: {
-              content: title,
+              content: created_by,
             },
           },
         ],
       },
+      description: {
+        rich_text: [
+          {
+            type: "text",
+            text: {
+              content: description,
+            },
+          },
+        ],
+      },
+
       group: {
         rich_text: [
           {
@@ -53,16 +71,6 @@ const addExpense = async (
       },
       My_Share: {
         number: my_share,
-      },
-      Created_by: {
-        rich_text: [
-          {
-            type: "text",
-            text: {
-              content: created_by,
-            },
-          },
-        ],
       },
 
       Date: {
@@ -103,4 +111,20 @@ const updateExpense = async (expense, isDeleted) => {
   });
 };
 
-module.exports = { addExpense, updateExpense };
+const isExpenseAvailable = async (expenseId) => {
+  console.log(expenseId);
+  console.log("Finding Expense");
+  const row = await notion.databases.query({
+    database_id: process.env.database_id,
+    filter: {
+      property: "expenseID",
+      number: {
+        equals: expenseId,
+      },
+    },
+  });
+  // console.log("---------------------------------------------------", row);
+  return row.results.length === 0 ? false : true;
+};
+
+module.exports = { addExpense, updateExpense, isExpenseAvailable };
