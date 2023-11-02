@@ -1,10 +1,9 @@
 name: Node.js CI
 
 on:
-  push:
-    branches:
-      - master  # Replace 'main' with your default branch name
-
+  schedule:
+    - cron: '0 0 * * *'  # Schedule to run every day at 12 
+    
 jobs:
   build:
     runs-on: windows-latest
