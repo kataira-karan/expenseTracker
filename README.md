@@ -20,6 +20,7 @@ The app doesn't just add the expenses; it also calculates the total expenditure,
 Now, managing shared expenses is not a chore but a breeze, and my Notion page is always up to date. It's a testament to how technology can make our lives more efficient and free up time for more enjoyable pursuits."
 
 
-![image](https://github.com/kataira-karan/expenseTracker/assets/120698339/229739ef-0846-4e88-a43c-aa61e20a2a1d)
+![image](https://github.com/kataira-karan/expenseTracker/assets/120698339/527e7537-8a24-489c-8154-da1624c3b655)
+
 
 ![image](https://github.com/kataira-karan/expenseTracker/assets/120698339/905efb5d-dd8a-4094-a3f8-27b5de172c30)
