@@ -107,7 +107,7 @@ const getExpenses = async () => {
 
 const getNotification = async () => {
   let getNotificationUrl =
-    "https://secure.splitwise.com/api/v3.0/get_notifications?limit=20";
+    "https://secure.splitwise.com/api/v3.0/get_notifications?limit=60";
 
   console.log("Getting Notification");
   let groupName = "No Group";
@@ -138,6 +138,8 @@ const getNotification = async () => {
       continue;
     }
 
+    console.log(expense);
+
     // LOOPING THROUGH ALL USER TO GET INFO ABOUT USER-------------------------------------
     let users = expense.users;
     let myShare = 0;
@@ -153,12 +155,18 @@ const getNotification = async () => {
       }
     }
 
+    if (expense.description === "Payment") {
+      myShare = 0;
+    }
+
     // IF THE EXPENSE IS ADDED IN THE GROUP GET THE GROUP DETAILS TO SHOW NAME OF THE GROUP IN NOTION
     if (expense.group_id) {
       // console.log("Expense added in group");
       let group = await getGroup(expense.group_id);
       if (!group) continue;
       groupName = group.name;
+    } else {
+      groupName = "Individual Expense";
     }
 
     // ADDING EXPENSE IN NOTION
@@ -166,6 +174,7 @@ const getNotification = async () => {
       expense.id,
       expense.description,
       parseFloat(myShare),
+      parseFloat(expense.cost),
       expense.created_by.picture.medium,
       expense.created_by.first_name,
       groupName,

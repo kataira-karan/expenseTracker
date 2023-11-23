@@ -10,6 +10,7 @@ const addExpense = async (
   expenseID,
   description,
   my_share,
+  totalCost,
   pageImg,
   created_by,
   groupName,
@@ -71,6 +72,9 @@ const addExpense = async (
       },
       My_Share: {
         number: my_share,
+      },
+      totalCost: {
+        number: totalCost,
       },
 
       Date: {
