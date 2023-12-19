@@ -121,11 +121,8 @@ const getNotification = async () => {
 
     // IF NOTIFICATION IS OF DELETED EXPENESE
     console.log(notification);
-    if (
-      notification.type !== 0 ||
-      notification.type !== 1 ||
-      notification.type !== 2
-    ) {
+    if (notification.type > 2) {
+      console.log("FUKC");
       continue;
     }
     // FETCH EXPENSE BY ID
