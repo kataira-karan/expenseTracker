@@ -20,7 +20,7 @@ const getExpenses = async () => {
   const expenses = x.data.expenses;
   console.log("len------------------------------------------", expenses.length);
   for (let i = 0; i < expenses.length; i++) {
-    // console.log(expense);
+    console.log(expense);
 
     let expense = expenses[i];
     console.log(
@@ -120,7 +120,14 @@ const getNotification = async () => {
     let notification = notifications[i];
 
     // IF NOTIFICATION IS OF DELETED EXPENESE
-
+    console.log(notification);
+    if (
+      notification.type !== 0 ||
+      notification.type !== 1 ||
+      notification.type !== 2
+    ) {
+      continue;
+    }
     // FETCH EXPENSE BY ID
     let expense = await getExpensesById(notification.source.id);
     // console.log(expense);
