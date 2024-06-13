@@ -1,24 +1,21 @@
-name: Node.js CI
+name: Run Node.js script every minute
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Schedule to run every day at 12 
-    
-jobs:
-  build:
-    runs-on: windows-latest
+    # Runs at every minute
+    - cron: '*/1 * * * *'
 
+jobs:
+  execute-node-script:
+    runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v1
       with:
-        node-version: 14  # You can specify the Node.js version you need
+        node-version: '14' # Specify the Node.js version you want to use
 
-    - name: Install dependencies
-      run: npm install
-
-    - name: Run Node.js file
-      run: npm start  # Replace 'yourfile.js' with the actual name of your Node.js file
+    - name: Run script
+      run: node ../../index.js # This path goes two directories up from the .github/workflows directory
