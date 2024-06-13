@@ -1,10 +1,9 @@
-name: Run Node.js script
+name: Node.js CI
 
 on:
   schedule:
-  # Runs at every minute
-    - cron: '*/1 * * * *'
-
+    - cron: '0 0 * * *'  # Schedule to run every day at 12 
+    
 jobs:
   execute-node-script:
     runs-on: ubuntu-latest
@@ -17,5 +16,5 @@ jobs:
       with:
         node-version: '14' # Specify the Node.js version you want to use
 
-    - name: Run script
-      run: node ../../index.js # Replace 'your-script.js' with the path to your Node.js file
+    - name: Run Node.js file
+      run: npm start  # Replace 'yourfile.js' with the actual name of your Node.js file
