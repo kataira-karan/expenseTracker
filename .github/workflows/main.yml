@@ -1,15 +1,1 @@
-# name : expenseTracker
 
-# on : [ push ]
-
-# jobs:
-#   build-node
-# runs-on : windows-latest
-#     steps:
-#       - run : node --version
-#       - run : npm --version
-#       - uses : actions/cheeckout@v3
-#       - run : npm install
-#       - run : node index.js
-      
-  
