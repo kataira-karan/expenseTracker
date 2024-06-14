@@ -1,18 +1,40 @@
-name: expenseTracker
+# name: expenseTracker
 
-on: [push]
+# on: [push]
+
+# jobs:
+#   build-node:
+#     runs-on: windows-latest
+#     steps:
+#       - name: Check Node.js and npm versions
+#         run: |
+#           node --version
+#           npm --version
+#       - name: Checkout repository
+#         uses: actions/checkout@v3
+#       - name: Install dependencies
+#         run: npm install
+#       - name: Run script
+#         run: node index.js
+
+name: Run Node.js script every minute
+
+on:
+  schedule:
+    # Runs at every minute
+    - cron: '*/1 * * * *'
 
 jobs:
-  build-node:
-    runs-on: windows-latest
+  execute-node-script:
+    runs-on: ubuntu-latest
     steps:
-      - name: Check Node.js and npm versions
-        run: |
-          node --version
-          npm --version
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Install dependencies
-        run: npm install
-      - name: Run script
-        run: node index.js
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20' # Specify the Node.js version you want to use
+
+    - name: Run script
+      run: node index.js
