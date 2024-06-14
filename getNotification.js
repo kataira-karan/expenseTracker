@@ -1,5 +1,5 @@
 const axios = require("axios");
-require(".env").config();
+require("dotenv").config();
 const { addExpense, updateExpense } = require("./notionAPI");
 const { getExpensesById, getUser, getGroup } = require("./splitwiseAPI");
 const { Client } = require("@notionhq/client");
