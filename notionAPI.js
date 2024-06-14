@@ -1,4 +1,4 @@
-require("dotenv").config();
+require(".env").config();
 // Notion SDK
 const { Client } = require("@notionhq/client");
 const notion = new Client({

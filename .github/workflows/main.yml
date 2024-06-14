@@ -1,15 +1,18 @@
-name : expenseTracker
+name: expenseTracker
 
-on : [ push ]
+on: [push]
 
 jobs:
-  build-node
-    runs-on : windows-latest
+  build-node:
+    runs-on: windows-latest
     steps:
-      - run : node --version
-      - run : npm --version
-      - uses : actions/cheeckout@v3
-      - run : npm install
-      - run : node app.js
-      
-  
+      - name: Check Node.js and npm versions
+        run: |
+          node --version
+          npm --version
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
+      - name: Run script
+        run: node index.js

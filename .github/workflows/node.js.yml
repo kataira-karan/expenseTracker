@@ -3,19 +3,19 @@ name: Run Node.js script every minute
 on:
   schedule:
     # Runs at every minute
-    - cron: '*/1 * * * *'
+    - cron: '*/5 * * * *'
 
 jobs:
   execute-node-script:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Use Node.js
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v4
       with:
-        node-version: '14' # Specify the Node.js version you want to use
+        node-version: '20' # Specify the Node.js version you want to use
 
     - name: Run script
-      run: node ../../index.js # This path goes two directories up from the .github/workflows directory
+      run: node index.js
