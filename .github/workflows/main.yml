@@ -4,13 +4,12 @@ name: Run Node.js script every minute
 
 on:
   schedule:
-    # Runs at every minute
-    - cron: "*/5 * * * *"
-
+    # Runs every day 12AM
+    - cron: "0 0 * * *"
 jobs:
   execute-node-script:
     runs-on: ubuntu-latest
-    steps:
+    steps:  
     - name: Checkout repository
       uses: actions/checkout@v4
 
